@@ -1,5 +1,5 @@
 package com.company;
 
-public class UniversityFootballClub extends FootballClub{
+public class UniversityFootballClub {
 
 }
