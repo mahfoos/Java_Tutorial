@@ -5,6 +5,7 @@ public interface LeagueManager {
 	void delFootballClub();
 	void DisplayStatistics();
 	void displayPremierLeagueTable();
+	void addPlayMatch();
 
 
 }
