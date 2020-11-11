@@ -10,10 +10,5 @@ public class SchoolFootballClub extends FootballClub{
 		this.nameOfSchool = nameOfSchool;
 	}
 
-	@Override
-	public String toString() {
-		return "SchoolFootballClub{" +
-				"nameOfSchool='" + nameOfSchool + '\'' +
-				'}';
-	}
+
 }

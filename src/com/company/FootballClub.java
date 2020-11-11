@@ -69,15 +69,5 @@ public class FootballClub extends SportsClub {
 		this.numOfPlayedMatches = numOfPlayedMatches;
 	}
 
-	@Override
-	public String toString() {
-		return "FootballClub{" +
-				"numOfWin=" + numOfWin +
-				", numOfDraw=" + numOfDraw +
-				", numOfDefeat=" + numOfDefeat +
-				", score=" + score +
-				", numOfPoints=" + numOfPoints +
-				", numOfPlayedMatches=" + numOfPlayedMatches +
-				'}';
-	}
+
 }

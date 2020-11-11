@@ -26,7 +26,7 @@ public class ConsoleApplication {
 					manager.displayPremierLeagueTable();
 					break ;
 				case 5:
-					manager.displayPremierLeagueTable();
+					addPlayMatch();
 					break ;
 				case 6:
 					System.out.println("Thank You For Use the Premier League Console Application");
@@ -48,6 +48,10 @@ public class ConsoleApplication {
 	}
 
 	public static void addFootballClub(){
+//		SportsClub sportsClub = new FootballClub("Barcelona","Spain",0,0,0,0,0,0,"g");
+//		SportsClub sportsClub1 = new FootballClub("Beyren","Germani",0,0,0,0,0,0,"g");
+//		PremierLeagueManager.sportsClubList.add(sportsClub);
+//		PremierLeagueManager.sportsClubList.add(sportsClub1);
 		SportsClub sportsClub;
 
 		System.out.println("Enter the Club Name: ");
@@ -65,11 +69,12 @@ public class ConsoleApplication {
 
 	public static void addPlayMatch(){
 
+		//premierLeagueManager.addPlayMatch("Barcelona","Beyren",2,3,"g");
 
 		System.out.println("Enter the First Club name : ");
 		String firstTeam = USER_INPUT.next();
 
-		System.out.println("Enter the Seccond Club Name : ");
+		System.out.println("Enter the Second Club Name : ");
 		String seccondTeam = USER_INPUT.next();
 
 		System.out.println("Enter the First Club Score : ");
@@ -81,6 +86,7 @@ public class ConsoleApplication {
 		System.out.println("Enter the Date: ");
 		String date = USER_INPUT.next();
 
+		manager.addPlayMatch(firstTeam,seccondTeam,score1,score2,date);
 
 
 	}
@@ -89,6 +95,8 @@ public class ConsoleApplication {
 
 		System.out.println("Enter the Club Name: ");
 		String name = USER_INPUT.next();
+
+
 	}
 
 

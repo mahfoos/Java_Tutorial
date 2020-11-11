@@ -9,7 +9,7 @@ public class PremierLeagueManager implements LeagueManager {
 	static private int drawn;
 	static private int lost;
 
-	private List<SportsClub> sportsClubList = new ArrayList<>();
+	static public List<SportsClub> sportsClubList = new ArrayList<>();
 
 	@Override
 	public void addFootballClub(SportsClub sportsClub) {
@@ -18,7 +18,7 @@ public class PremierLeagueManager implements LeagueManager {
 		} else {
 			sportsClubList.add(sportsClub);
 		}
-		sportsClubList.add(sportsClub);
+
 	}
 
 	@Override
@@ -28,7 +28,6 @@ public class PremierLeagueManager implements LeagueManager {
 
 	@Override
 	public void DisplayClubDetails() {
-
 		if (sportsClubList.isEmpty()) {
 			System.out.println("No Clubs are Created Still");
 		} else {
@@ -51,30 +50,33 @@ public class PremierLeagueManager implements LeagueManager {
 	@Override
 	public void displayPremierLeagueTable() {
 
+
 	}
 
 	@Override
 	public void addPlayMatch(String firstTeam, String seccondTeam, int score1, int score2, String date) {
 		int count = 0;
 		for (SportsClub sportsClub : sportsClubList) {
-			if (sportsClub.getNameOfClub() == firstTeam){
+			if (sportsClub.getNameOfClub() .equals(firstTeam) ){
 				score(score1,score2,((FootballClub) sportsClub));
 				SportsClub sportsClub1 = new FootballClub(firstTeam,sportsClub.getLocationOfCLub(),win,drawn,lost,score1 +((FootballClub) sportsClub).getScore(), point,
 						((FootballClub) sportsClub).getNumOfPlayedMatches() + 1,date);
 
 				sportsClubList.set(count,sportsClub1);
-			}else if(sportsClub.getNameOfClub() == seccondTeam){
+			}else if(sportsClub.getNameOfClub() .equals(seccondTeam) ){
 				score(score2,score1,((FootballClub) sportsClub));
 				SportsClub sportsClub1 = new FootballClub(seccondTeam,sportsClub.getLocationOfCLub(),win,drawn,lost,score2 +((FootballClub) sportsClub).getScore(), point,
 						((FootballClub) sportsClub).getNumOfPlayedMatches() + 1,date);
+				sportsClubList.set(count,sportsClub1);
 			}
+			count++;
 		}
 
 	}
 
 	public void score(int score1,int score2,FootballClub footballClub){
 		if (score1 > score2){
-			win =  footballClub.getNumOfWin() + 1; // typecasting
+			win =  footballClub.getNumOfWin() + 1;
 			point = footballClub.getNumOfPoints() + 3;
 		}else if (score1 == score2){
 			drawn = footballClub.getNumOfDraw() + 1;

@@ -25,11 +25,5 @@ public class SportsClub {
 		this.locationOfCLub = locationOfCLub;
 	}
 
-	@Override
-	public String toString() {
-		return "SportsClub{" +
-				"nameOfClub='" + nameOfClub + '\'' +
-				", locationOfCLub='" + locationOfCLub + '\'' +
-				'}';
-	}
+
 }
