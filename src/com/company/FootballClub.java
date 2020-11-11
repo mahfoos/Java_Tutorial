@@ -7,8 +7,9 @@ public class FootballClub extends SportsClub {
 	private int score;
 	private int numOfPoints;
 	private int numOfPlayedMatches;
+	private String date;
 
-	public FootballClub(String nameOfClub, String locationOfCLub,  int numOfWin, int numOfDraw, int numOfDefeat, int score, int numOfPoints, int numOfPlayedMatches) {
+	public FootballClub(String nameOfClub, String locationOfCLub,  int numOfWin, int numOfDraw, int numOfDefeat, int score, int numOfPoints, int numOfPlayedMatches,String date) {
 		super(nameOfClub, locationOfCLub);
 		this.numOfWin = numOfWin;
 		this.numOfDraw = numOfDraw;
@@ -16,11 +17,9 @@ public class FootballClub extends SportsClub {
 		this.score = score;
 		this.numOfPoints = numOfPoints;
 		this.numOfPlayedMatches = numOfPlayedMatches;
+		this.date = date;
 	}
 
-	public FootballClub(String clubName, String location) {
-		super(clubName,location);
-	}
 
 	public int getNumOfWin() {
 		return numOfWin;
@@ -68,5 +67,17 @@ public class FootballClub extends SportsClub {
 
 	public void setNumOfPlayedMatches(int numOfPlayedMatches) {
 		this.numOfPlayedMatches = numOfPlayedMatches;
+	}
+
+	@Override
+	public String toString() {
+		return "FootballClub{" +
+				"numOfWin=" + numOfWin +
+				", numOfDraw=" + numOfDraw +
+				", numOfDefeat=" + numOfDefeat +
+				", score=" + score +
+				", numOfPoints=" + numOfPoints +
+				", numOfPlayedMatches=" + numOfPlayedMatches +
+				'}';
 	}
 }

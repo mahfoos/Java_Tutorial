@@ -20,12 +20,15 @@ public class ConsoleApplication {
 					//delFootballClub();
 					break;
 				case 3:
-					manager.DisplayStatistics();
+					manager.DisplayClubDetails();
 					break ;
 				case 4:
 					manager.displayPremierLeagueTable();
 					break ;
 				case 5:
+					manager.displayPremierLeagueTable();
+					break ;
+				case 6:
 					System.out.println("Thank You For Use the Premier League Console Application");
 					break menu;
 				default:
@@ -53,11 +56,39 @@ public class ConsoleApplication {
 		System.out.println("Enter the Location of Club: ");
 		String location = USER_INPUT.next();
 
-		sportsClub = new FootballClub(clubName,location);
+		sportsClub = new FootballClub(clubName,location,0,0,0,0,0,0,"---");
 
 		manager.addFootballClub(sportsClub);
 
 
+	}
+
+	public static void addPlayMatch(){
+
+
+		System.out.println("Enter the First Club name : ");
+		String firstTeam = USER_INPUT.next();
+
+		System.out.println("Enter the Seccond Club Name : ");
+		String seccondTeam = USER_INPUT.next();
+
+		System.out.println("Enter the First Club Score : ");
+		int score1 = USER_INPUT.nextInt();
+
+		System.out.println("Enter the Seccond Club Score : ");
+		int score2 = USER_INPUT.nextInt();
+
+		System.out.println("Enter the Date: ");
+		String date = USER_INPUT.next();
+
+
+
+	}
+
+	public static void DisplayClubDetails(){
+
+		System.out.println("Enter the Club Name: ");
+		String name = USER_INPUT.next();
 	}
 
 

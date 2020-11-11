@@ -24,4 +24,12 @@ public class SportsClub {
 	public void setLocationOfCLub(String locationOfCLub) {
 		this.locationOfCLub = locationOfCLub;
 	}
+
+	@Override
+	public String toString() {
+		return "SportsClub{" +
+				"nameOfClub='" + nameOfClub + '\'' +
+				", locationOfCLub='" + locationOfCLub + '\'' +
+				'}';
+	}
 }
