@@ -18,6 +18,7 @@ public class FootballClub extends SportsClub {
 		this.numOfPoints = numOfPoints;
 		this.numOfPlayedMatches = numOfPlayedMatches;
 		this.date = date;
+
 	}
 
 
@@ -69,5 +70,11 @@ public class FootballClub extends SportsClub {
 		this.numOfPlayedMatches = numOfPlayedMatches;
 	}
 
+	public String getDate() {
+		return date;
+	}
 
+	public void setDate(String date) {
+		this.date = date;
+	}
 }
