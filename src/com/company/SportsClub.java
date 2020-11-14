@@ -1,5 +1,6 @@
 package com.company;
 
+
 public class SportsClub {
 	private String nameOfClub;
 	private String locationOfCLub;
@@ -24,6 +25,7 @@ public class SportsClub {
 	public void setLocationOfCLub(String locationOfCLub) {
 		this.locationOfCLub = locationOfCLub;
 	}
+
 
 
 }

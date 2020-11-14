@@ -1,20 +1,27 @@
 package com.company;
 
-public class FootballClub extends SportsClub {
+
+import java.util.Comparator;
+
+public class FootballClub extends SportsClub  {
 	private int numOfWin;
 	private int numOfDraw;
 	private int numOfDefeat;
-	private int score;
+	private int numOfScore;
+	private int receivedGoal;
+	private int goalDifference;
 	private int numOfPoints;
 	private int numOfPlayedMatches;
 	private String date;
 
-	public FootballClub(String nameOfClub, String locationOfCLub,  int numOfWin, int numOfDraw, int numOfDefeat, int score, int numOfPoints, int numOfPlayedMatches,String date) {
+	public FootballClub(String nameOfClub, String locationOfCLub, int numOfWin, int numOfDraw, int numOfDefeat, int numOfScore, int receivedGoal, int goalDifference, int numOfPoints, int numOfPlayedMatches, String date) {
 		super(nameOfClub, locationOfCLub);
 		this.numOfWin = numOfWin;
 		this.numOfDraw = numOfDraw;
 		this.numOfDefeat = numOfDefeat;
-		this.score = score;
+		this.numOfScore = numOfScore;
+		this.receivedGoal = receivedGoal;
+		this.goalDifference = goalDifference;
 		this.numOfPoints = numOfPoints;
 		this.numOfPlayedMatches = numOfPlayedMatches;
 		this.date = date;
@@ -46,12 +53,28 @@ public class FootballClub extends SportsClub {
 		this.numOfDefeat = numOfDefeat;
 	}
 
-	public int getScore() {
-		return score;
+	public int getNumOfScore() {
+		return numOfScore;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setNumOfScore(int numOfScore) {
+		this.numOfScore = numOfScore;
+	}
+
+	public int getReceivedGoal() {
+		return receivedGoal;
+	}
+
+	public void setReceivedGoal(int receivedGoal) {
+		this.receivedGoal = receivedGoal;
+	}
+
+	public int getGoalDifference() {
+		return goalDifference;
+	}
+
+	public void setGoalDifference(int goalDifference) {
+		this.goalDifference = goalDifference;
 	}
 
 	public int getNumOfPoints() {
@@ -77,4 +100,7 @@ public class FootballClub extends SportsClub {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+
+
 }
