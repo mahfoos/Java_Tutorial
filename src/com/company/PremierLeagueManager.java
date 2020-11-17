@@ -1,10 +1,10 @@
 package com.company;
-
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PremierLeagueManager implements LeagueManager {
+public class PremierLeagueManager implements LeagueManager  {
 	static private int win;
 	static private int point;
 	static private int drawn ;
@@ -24,7 +24,8 @@ public class PremierLeagueManager implements LeagueManager {
 
 	@Override
 	public void delFootballClub() {
-
+		int size = sportsClubList.size();
+		sportsClubList.remove(size - 1);
 	}
 
 	@Override
@@ -36,13 +37,13 @@ public class PremierLeagueManager implements LeagueManager {
 				if (sportsClub.getNameOfClub().equals(name)) {
 					System.out.println("\n:::::::::::::::::::::: Created Football Clubs ::::::::::::::::::::::::::::::");
 					System.out.println("\n1: Name Of the Club : " + sportsClub.getNameOfClub());
-					System.out.println("\n2: Location of the Club : " + sportsClub.getLocationOfCLub());
+					System.out.println("\n2: Location of the Club : " + sportsClub.getLocationOfClub());
 					System.out.println("\n3: Number of Played Matches : "+((FootballClub) sportsClub).getNumOfPlayedMatches());
 					System.out.println("\n4: Number of Won Matches : " + ((FootballClub) sportsClub).getNumOfWin());
 					System.out.println("\n5: Number of Defeat Matches : " + ((FootballClub) sportsClub).getNumOfDefeat());
 					System.out.println("\n6: Number of Drawn Matches : " + ((FootballClub) sportsClub).getNumOfDraw());
-					System.out.println("\n7: Total Score of the Club :  " + ((FootballClub) sportsClub).getNumOfScore());
-					System.out.println("\n8: Total Received Goal : " + ((FootballClub) sportsClub).getReceivedGoal());
+					System.out.println("\n7: Total Score of the Club :  " + ((FootballClub) sportsClub).getNumOfScoredGoals());
+					System.out.println("\n8: Total Received Goal : " + ((FootballClub) sportsClub).getNumOfReceivedGoals());
 					System.out.println("\n9: Goal Difference : " + ((FootballClub) sportsClub).getGoalDifference());
 					System.out.println("\n8: Total Points of the Club : " + ((FootballClub) sportsClub).getNumOfPoints());
 
@@ -58,37 +59,41 @@ public class PremierLeagueManager implements LeagueManager {
 
 	@Override
 	public void displayPremierLeagueTable() {
-
+		int num1 = 1;
+		sportsClubList.sort(Collections.reverseOrder()); // Sort
 		String leftAlignFormat = "| %-15s | %-20s | %-8s | %-8s | %-8s | %-8s | %-9s | %-12s | %-14S | %-7s | %n";
-		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+--------%n");
-		System.out.format("| Position        | Club Name            | Played   | Won      | Drawn    | Lost     | Goals For | Goal Against | Goal Difference | Points |%n");
-		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+---------%n");
+		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+---------+%n");
+		System.out.format("| Position        | Club Name            | Played   | Won      | Drawn    | Lost     | Goals For | Goal Against | Goal Difference | Points  |%n");
+		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+---------+%n");
 		for (SportsClub sportsClub : sportsClubList) {
-			System.out.format(leftAlignFormat, "aaa", sportsClub.getNameOfClub(), ((FootballClub) sportsClub).getNumOfPlayedMatches(), ((FootballClub) sportsClub).getNumOfWin()
-					, ((FootballClub) sportsClub).getNumOfDraw(), ((FootballClub) sportsClub).getNumOfDefeat(), ((FootballClub) sportsClub).getNumOfScore(),((FootballClub) sportsClub).getReceivedGoal(),
+			System.out.format(leftAlignFormat, num1, sportsClub.getNameOfClub(), ((FootballClub) sportsClub).getNumOfPlayedMatches(), ((FootballClub) sportsClub).getNumOfWin()
+					, ((FootballClub) sportsClub).getNumOfDraw(), ((FootballClub) sportsClub).getNumOfDefeat(), ((FootballClub) sportsClub).getNumOfScoredGoals(),((FootballClub) sportsClub).getNumOfReceivedGoals(),
 					((FootballClub) sportsClub).getGoalDifference(),((FootballClub) sportsClub).getNumOfPoints());
+			num1++;
 		}
-		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+---------%n");
+		System.out.format("+-----------------+----------------------+----------+----------+----------+----------+-----------+--------------+-----------------+---------+%n");
 
 
 	}
 
 	@Override
 	public void addPlayMatch(String firstTeam, String seccondTeam, int score1, int score2, String date) {
-		int count = 0;
+		int count =0;
 		for (SportsClub sportsClub : sportsClubList) {
+			int difference1 = score1 + ((FootballClub) sportsClub).getNumOfScoredGoals() - score2 +((FootballClub) sportsClub).getNumOfReceivedGoals();
+			int difference2 = score2 + ((FootballClub) sportsClub).getNumOfScoredGoals() - score1 +((FootballClub) sportsClub).getNumOfReceivedGoals();
 			if (sportsClub.getNameOfClub().equals(firstTeam)) {
 				score(score1, score2, ((FootballClub) sportsClub));
-				SportsClub sportsClub1 = new FootballClub(firstTeam, sportsClub.getLocationOfCLub(), win, drawn, lost, score1 + ((FootballClub) sportsClub).getNumOfScore(),score2 +((FootballClub) sportsClub).getReceivedGoal() ,
-						score1 + ((FootballClub) sportsClub).getNumOfScore() - score2 +((FootballClub) sportsClub).getReceivedGoal(),point,
+				SportsClub sportsClub1 = new FootballClub(firstTeam, sportsClub.getLocationOfClub(), win, drawn, lost, score1 + ((FootballClub) sportsClub).getNumOfScoredGoals(),score2 +((FootballClub) sportsClub).getNumOfReceivedGoals() ,
+						difference1,point,
 						((FootballClub) sportsClub).getNumOfPlayedMatches() + 1, date);
 
 
 				sportsClubList.set(count, sportsClub1);
 			} else if (sportsClub.getNameOfClub().equals(seccondTeam)) {
 				score(score2, score1, ((FootballClub) sportsClub));
-				SportsClub sportsClub1 = new FootballClub(seccondTeam, sportsClub.getLocationOfCLub(), win, drawn, lost, score2 + ((FootballClub) sportsClub).getNumOfScore(),score1+((FootballClub) sportsClub).getReceivedGoal(),
-						score2 + ((FootballClub) sportsClub).getNumOfScore() - score1 +((FootballClub) sportsClub).getReceivedGoal(),point,
+				SportsClub sportsClub1 = new FootballClub(seccondTeam, sportsClub.getLocationOfClub(), win, drawn, lost, score2 + ((FootballClub) sportsClub).getNumOfScoredGoals(),score1+((FootballClub) sportsClub).getNumOfReceivedGoals(),
+						difference2,point,
 						((FootballClub) sportsClub).getNumOfPlayedMatches() + 1, date);
 				sportsClubList.set(count, sportsClub1);
 			}
@@ -114,6 +119,48 @@ public class PremierLeagueManager implements LeagueManager {
 		}
 
 
+	}
+	@Override
+	public void saveData()  {
+
+		try
+		{
+			FileOutputStream fileOut = new FileOutputStream("sample");
+			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+			objOut.writeObject(sportsClubList);
+			objOut.close();
+			fileOut.close();
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+
+
+	}
+	@Override
+	public void loadData()  {
+		try {
+
+			FileInputStream fileInput = new FileInputStream("sample");
+			ObjectInputStream objOutput = new ObjectInputStream(fileInput);
+
+			sportsClubList = (ArrayList) objOutput.readObject();
+
+			objOutput.close();
+			fileInput.close();
+		}
+        catch (IOException ioException)
+		{
+			ioException.printStackTrace();
+			return;
+		}
+        catch (ClassNotFoundException classNotFound)
+		{
+			System.out.println("Class not found");
+			classNotFound.printStackTrace();
+			return;
+		}
 	}
 
 

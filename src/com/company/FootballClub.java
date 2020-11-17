@@ -1,26 +1,25 @@
 package com.company;
 
-
 import java.util.Comparator;
 
-public class FootballClub extends SportsClub  {
+public class FootballClub extends SportsClub implements Comparable<FootballClub> {
 	private int numOfWin;
 	private int numOfDraw;
 	private int numOfDefeat;
-	private int numOfScore;
-	private int receivedGoal;
+	private int numOfScoredGoals;
+	private int numOfReceivedGoals;
 	private int goalDifference;
 	private int numOfPoints;
 	private int numOfPlayedMatches;
 	private String date;
 
-	public FootballClub(String nameOfClub, String locationOfCLub, int numOfWin, int numOfDraw, int numOfDefeat, int numOfScore, int receivedGoal, int goalDifference, int numOfPoints, int numOfPlayedMatches, String date) {
+	public FootballClub(String nameOfClub, String locationOfCLub, int numOfWin, int numOfDraw, int numOfDefeat, int numOfScoredGoals, int numOfReceivedGoals, int goalDifference, int numOfPoints, int numOfPlayedMatches, String date) {
 		super(nameOfClub, locationOfCLub);
 		this.numOfWin = numOfWin;
 		this.numOfDraw = numOfDraw;
 		this.numOfDefeat = numOfDefeat;
-		this.numOfScore = numOfScore;
-		this.receivedGoal = receivedGoal;
+		this.numOfScoredGoals = numOfScoredGoals;
+		this.numOfReceivedGoals = numOfReceivedGoals;
 		this.goalDifference = goalDifference;
 		this.numOfPoints = numOfPoints;
 		this.numOfPlayedMatches = numOfPlayedMatches;
@@ -53,20 +52,20 @@ public class FootballClub extends SportsClub  {
 		this.numOfDefeat = numOfDefeat;
 	}
 
-	public int getNumOfScore() {
-		return numOfScore;
+	public int getNumOfScoredGoals() {
+		return numOfScoredGoals;
 	}
 
-	public void setNumOfScore(int numOfScore) {
-		this.numOfScore = numOfScore;
+	public void setNumOfScoredGoals(int numOfScoredGoals) {
+		this.numOfScoredGoals = numOfScoredGoals;
 	}
 
-	public int getReceivedGoal() {
-		return receivedGoal;
+	public int getNumOfReceivedGoals() {
+		return numOfReceivedGoals;
 	}
 
-	public void setReceivedGoal(int receivedGoal) {
-		this.receivedGoal = receivedGoal;
+	public void setNumOfReceivedGoals(int numOfReceivedGoals) {
+		this.numOfReceivedGoals = numOfReceivedGoals;
 	}
 
 	public int getGoalDifference() {
@@ -102,5 +101,11 @@ public class FootballClub extends SportsClub  {
 	}
 
 
-
+	@Override
+	public int compareTo(FootballClub football) {
+		return Comparator.comparing(FootballClub::getNumOfPoints)
+				.thenComparing(FootballClub::getGoalDifference)
+				.compare(this, football);
+	}
 }
+

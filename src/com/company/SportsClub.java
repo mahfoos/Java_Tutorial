@@ -1,13 +1,16 @@
 package com.company;
 
 
-public class SportsClub {
-	private String nameOfClub;
-	private String locationOfCLub;
+import java.io.Serializable;
 
-	public SportsClub(String nameOfClub, String locationOfCLub) {
+public class SportsClub implements Serializable {
+
+	private String nameOfClub;
+	private String locationOfClub;
+
+	public SportsClub (String nameOfClub, String locationOfClub) {
 		this.nameOfClub = nameOfClub;
-		this.locationOfCLub = locationOfCLub;
+		this.locationOfClub = locationOfClub;
 	}
 
 	public String getNameOfClub() {
@@ -18,14 +21,12 @@ public class SportsClub {
 		this.nameOfClub = nameOfClub;
 	}
 
-	public String getLocationOfCLub() {
-		return locationOfCLub;
+	public String getLocationOfClub() {
+		return locationOfClub;
 	}
 
-	public void setLocationOfCLub(String locationOfCLub) {
-		this.locationOfCLub = locationOfCLub;
+	public void setLocationOfClub(String loactionOfClub) {
+		this.locationOfClub = locationOfClub;
 	}
-
-
 
 }

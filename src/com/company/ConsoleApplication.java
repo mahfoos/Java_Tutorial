@@ -1,17 +1,19 @@
 package com.company;
 
+import javafx.application.Application;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleApplication {
 	private static boolean decide;
 	private static String clubName;
-	private static String location;
 	private static boolean clubNameCheck;
-	private static boolean locationCheck;
 	static LeagueManager manager = new PremierLeagueManager();
 	final static Scanner USER_INPUT = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
+		manager.loadData();
 		menu:
 		do {
 			displayMenu();
@@ -24,7 +26,8 @@ public class ConsoleApplication {
 					endOfDecide();
 					break;
 				case 2:
-					//delFootballClub();
+					manager.delFootballClub();
+					endOfDecide();
 					break;
 				case 3:
 					DisplayClubDetails();
@@ -40,8 +43,11 @@ public class ConsoleApplication {
 					endOfDecide();
 					break;
 				case 6:
+					Application.launch(PremierLeagueGui.class); // For gui
+				case 7:
 					System.out.println("\n:::::::::::Thank You For Use the Premier League Console Application::::::::");
 					decide = false;
+					manager.saveData();
 					break menu;
 				default:
 					System.out.println("\nYou Selected an Invalid Option. Please Try Again! ");
@@ -63,6 +69,9 @@ public class ConsoleApplication {
 
 	private static void addFootballClub() {
 		SportsClub sportsClub;
+		String location;
+		boolean locationCheck;
+
 		do {
 			System.out.print("\nEnter the Club Name: ");
 			clubName = USER_INPUT.next();
@@ -72,6 +81,7 @@ public class ConsoleApplication {
 				System.out.println("\nPlease enter valid input");
 			}
 		} while (!clubNameCheck);
+
 
 		do {
 
@@ -84,40 +94,39 @@ public class ConsoleApplication {
 
 		} while (!locationCheck);
 
-		sportsClub = new FootballClub(clubName, location, 0, 0, 0, 0,0, 0,0, 0, "");
+		sportsClub = new FootballClub(clubName, location, 0, 0, 0, 0, 0, 0, 0, 0, "");
 		manager.addFootballClub(sportsClub);
 
 
 	}
 
 	private static void addPlayMatch() {
-		boolean check;
 
-			System.out.print("\nEnter the First Club name : ");
-			String firstTeam = USER_INPUT.next();
+		System.out.print("\nEnter the First Club name : ");
+		String firstTeam = USER_INPUT.next();
 
-			System.out.print("\nEnter the Second Club Name : ");
-			String secondTeam = USER_INPUT.next();
+		System.out.print("\nEnter the Second Club Name : ");
+		String secondTeam = USER_INPUT.next();
 
-			System.out.print("\nEnter the First Club Score : ");
-			int score1 = USER_INPUT.nextInt();
+		System.out.print("\nEnter the First Club Score : ");
+		int score1 = USER_INPUT.nextInt();
 
-			System.out.print("\nEnter the Second Club Score : ");
-			int score2 = USER_INPUT.nextInt();
+		System.out.print("\nEnter the Second Club Score : ");
+		int score2 = USER_INPUT.nextInt();
 
-			System.out.print("\nEnter the Date: ");
-			String date = USER_INPUT.next();
+		System.out.print("\nEnter the Date: ");
+		String date = USER_INPUT.next();
 
-			manager.addPlayMatch(firstTeam, secondTeam, score1, score2, date);
-
+		manager.addPlayMatch(firstTeam, secondTeam, score1, score2, date);
 
 
 	}
+
 	private static void DisplayClubDetails() {
 		do {
 			System.out.print("\nEnter the Club Name: ");
 			clubName = USER_INPUT.next();
-			clubNameCheck = Validation.stringCheck(clubName);
+			clubNameCheck = clubName.matches("^[a-zA-Z]*$");
 		} while (!clubNameCheck);
 		manager.DisplayClubDetails(clubName);
 
