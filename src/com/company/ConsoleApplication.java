@@ -1,8 +1,6 @@
 package com.company;
 
 import javafx.application.Application;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleApplication {
@@ -94,7 +92,7 @@ public class ConsoleApplication {
 
 		} while (!locationCheck);
 
-		sportsClub = new FootballClub(clubName, location, 0, 0, 0, 0, 0, 0, 0, 0, "");
+		sportsClub = new FootballClub(clubName, location, 0, 0, 0, 0, 0, 0, 0, 0, "",0);
 		manager.addFootballClub(sportsClub);
 
 

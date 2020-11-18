@@ -11,7 +11,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
 
 public class PremierLeagueGui extends Application {
 
@@ -25,8 +24,8 @@ public class PremierLeagueGui extends Application {
 		TableView<SportsClub> tableMember = new TableView<>();
 		final ObservableList<SportsClub> observer = FXCollections.observableArrayList(PremierLeagueManager.sportsClubList);
 
-//		TableColumn memberId = new TableColumn("Position"); // Creating Membership Number Column
-//		memberId.setCellValueFactory(new PropertyValueFactory("membershipNumber"));
+		TableColumn position = new TableColumn("Position"); // Creating Membership Number Column
+		position.setCellValueFactory(new PropertyValueFactory("position"));
 
 		TableColumn clubName = new TableColumn("Club Name"); // Creating Member Name Column
 		clubName.setCellValueFactory(new PropertyValueFactory("nameOfClub"));
@@ -55,7 +54,7 @@ public class PremierLeagueGui extends Application {
 
 		tableMember.setItems(observer);
 		tableMember.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		tableMember.getColumns().addAll(clubName,played,won,points,lost,goalsAgainst,goalsDifference);
+		tableMember.getColumns().addAll(position,clubName,played,won,points,lost,goalsAgainst,goalsDifference);
 
 		tableMember.setMaxSize(600,400);
 		VBox tblBox = new VBox();
